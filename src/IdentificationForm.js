@@ -20,7 +20,7 @@ export default function IdentificationForm({ updateAnalysis, nextStep }) {
 
 	return (
 		<div className="form-container">
-			<h1>Análise de música</h1>
+			<h1>Análise de Improvisações</h1>
 
 			<div>
 				<TextField
