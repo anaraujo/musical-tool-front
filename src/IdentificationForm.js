@@ -1,10 +1,12 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import useInputState from "./hooks/useInputState";
 import { TextField, Button } from "@mui/material";
 
 export default function IdentificationForm({ updateAnalysis, nextStep }) {
 	const [ name, updateName ] = useInputState("");
 	const [ group, updateGroup ] = useInputState("");
+	const [ emptyName, setEmptyName ] = useState(false);
+	const [ emptyGroup, setEmptyGroup ] = useState(false);
 
 	useEffect(
 		() => {
@@ -14,8 +16,16 @@ export default function IdentificationForm({ updateAnalysis, nextStep }) {
 	);
 
 	const handleSubmit = () => {
-		updateAnalysis({ name, group });
-		nextStep();
+		if (!!name) { setEmptyName(false) }
+		else { setEmptyName(true) }
+
+		if (!!group) { setEmptyGroup(false) }
+		else { setEmptyGroup(true) }
+
+		if (name && group) {
+			updateAnalysis({ name, group });
+			nextStep();
+		}
 	};
 
 	return (
@@ -32,6 +42,8 @@ export default function IdentificationForm({ updateAnalysis, nextStep }) {
 					variant="standard"
 					color="secondary"
 					sx={{ mr: 4 }}
+					required
+					error={emptyName}
 				/>
 				<TextField
 					id="group"
@@ -41,6 +53,8 @@ export default function IdentificationForm({ updateAnalysis, nextStep }) {
 					label="Grupo"
 					variant="standard"
 					color="secondary"
+					required
+					error={emptyGroup}
 				/>
 			</div>
 
