@@ -11,7 +11,7 @@ export default function Formflow() {
 	const [ songs, setSongs ] = useState([]);
 	const [ musicId, setMusicId ] = useState("");
 
-	const baseURL = "https://music-tool-api.herokuapp.com/";
+	const baseURL = "https://d8gfn7.deta.dev/"
 	const getURL = baseURL + "musics";
 	const postURL = baseURL + "analysis";
 
