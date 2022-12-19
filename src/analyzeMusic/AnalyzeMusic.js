@@ -17,7 +17,7 @@ export default function AnalyzeMusic({ updateAnalysis, nextStep, musicId }) {
 	const [ musicAnalysis, updateMusicAnalysis, resetMusicAnalysis ] = useSliderState([]);
 	const [ songEnded, updateSongEnded ] = useSliderState(false);
 
-	const params = [ "Maintain", "Change" ];
+	const params = [ "Coordenados", "Não Coordenados" ];
 	let audio;
 
 	const setDuration = (e) => {
